@@ -103,14 +103,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setImageView(saveUri: Uri) {
+        viewBinding.imageCaptureButton.visibility = View.GONE
+        viewBinding.videoCaptureButton.visibility = View.GONE
         viewBinding.frameLayoutPreview.visibility = View.VISIBLE
-        Glide.with(viewBinding.imageViewPreview.context)
-            .load(saveUri)
-            .into(viewBinding.imageViewPreview)
+//        Glide.with(viewBinding.imageViewPreview.context)
+//            .load(saveUri)
+//            .into(viewBinding.imageViewPreview)
+
+        viewBinding.imageViewPreview.setImageURI(saveUri)
     }
 
     private fun hideImageView() {
         viewBinding.frameLayoutPreview.visibility = View.GONE
+        viewBinding.imageCaptureButton.visibility = View.VISIBLE
+        viewBinding.videoCaptureButton.visibility = View.VISIBLE
+
     }
 
     private fun isImageViewVisible() = (viewBinding.frameLayoutPreview.visibility == View.GONE)
